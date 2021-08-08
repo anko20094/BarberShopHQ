@@ -11,9 +11,15 @@ end
 class Barber < ActiveRecord::Base
 end
 
+# Задвання №1 29 урок тут
+def save_form_data_to_database (name, phone, date, barber, color)
+	Client.create :name => name, :phone => phone, :datestamp => date, :barber => barber, :color => color
+end
+
 before do
 	@barbers = Barber.all
 end
+# ---
 
 get '/' do
 	erb :index 
@@ -34,26 +40,25 @@ post '/visit' do
 		:name => 'Введіть ім\'я',
 		:phone => 'Введіть телефон',
 		:date => 'Введіть дату та час'
-		}
-		
-		# для уожної пари ключ-знгачення
-		# hh.each do |key, value|
-		#   if params[key] == ''
-		#     @error = hh[key]
-		#   return erb :visit
-		# end
-		# end
-	  
-		@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
-		if @error != ''
-		  return erb :visit
-		end
-	  
-		@message = "Вітаю, Ви, #{params[:name]}, записалися! Дата візиту - #{params[:date]}"
-		file = File.open './public/visit.txt', "a+"
-		file.puts("Ім'я клієнта: #{@username}, номер телефону: #{@phone}, Ваш перукар #{@barber}, колір волосся #{@color}, дата візиту: #{@datetime}!")
-		file.close
-	  
-		save_form_data_to_database
-		erb "<h2><%=@message%></h2>"
+	}
+	
+	# для уожної пари ключ-значення
+	# hh.each do |key, value|
+	#   if params[key] == ''
+	#     @error = hh[key]
+	#   return erb :visit
+	# end
+	# end
+	
+	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
+	if @error != ''
+		return erb :visit
+	end
+	
+	@message = "Вітаю, Ви, #{params[:name]}, записалися! Дата візиту - #{params[:date]}"
+
+# Задвання №1 29 урок тут
+	save_form_data_to_database(@username, @phone, @datetime, @barber, @color)
+# ---
+	erb "<h2><%=@message%></h2>"
 end
