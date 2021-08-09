@@ -4,17 +4,17 @@
 <br />
   <div class="form-group">
     <label>Введіть своє ім'я:</label>
-    <input type="text" name="name" class="form-control" placeholder="Введіть тут своє ім'я" value="<%= params[:name]%>">
+    <input type="text" name="contact[name]" class="form-control" placeholder="Введіть тут своє ім'я" value="<%= params[:name]%>">
   </div>
 
   <div class="form-group">
     <label>Введіть свій телефон:</label>
-    <input type="number" name="phone" class="form-control" placeholder="Введіть тут свій номер телефону" value="<%= params[:phone]%>">
+    <input type="number" name="contact[phone]" class="form-control" placeholder="Введіть тут свій номер телефону" value="<%= params[:phone]%>">
   </div>
 
   <div class="form-group">
     <label>Введіть своє запитання/пропозицію:</label>
-    <textarea type="text" name="question" class="form-control" placeholder="Введіть тут своє запитання/пропозицію" rows="5" value="<%= params[:question]%>"></textarea>
+    <textarea type="text" name="contact[question]" class="form-control" placeholder="Введіть тут своє запитання/пропозицію" rows="5" value="<%= params[:question]%>"></textarea>
   </div>
 
 
