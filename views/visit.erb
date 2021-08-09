@@ -12,21 +12,21 @@
 <br />
   <div class="form-group">
     <label>Введіть своє ім'я:</label>
-    <input type="text" name="name" class="form-control" placeholder="Введіть тут своє ім'я" value="<%= params[:name]%>">
+    <input type="text" name="client[name]" class="form-control" placeholder="Введіть тут своє ім'я" value="<%= params[:name]%>">
   </div>
 
   <div class="form-group">
     <label>Введіть свій телефон:</label>
-    <input type="text" name="phone" class="form-control" placeholder="Введіть тут свій номер телефону" value="<%= params[:phone]%>">
+  <input type="text" name="client[phone]" class="form-control" placeholder="Введіть тут свій номер телефону" value="<%= params[:phone]%>">
   </div>
 
   <div class="form-group">
     <label>Коли Вас чекати? </label>
-    <input id="datetimepicker" type="text" name="date" class="form-control" placeholder="Введіть дату й час свого візиту" value="<%= params[:date]%>">
+    <input type="datetime-local" name="client[datestamp]" class="form-control" placeholder="Введіть дату й час свого візиту" value="<%= params[:date]%>">
   </div>
   <div class="form-group">
     <label>Колір Вашого волосся буде: </label>
-    <select name="color" id="color">
+    <select name="client[color]" id="color">
       <option value="#7bd148">Green</option>
       <option value="#5484ed">Bold blue</option>
       <option value="#a4bdfc">Blue</option>
@@ -46,7 +46,6 @@
 </form>
 <script type="text/javascript">
   $('#color').simplecolorpicker();
-  $('#datetimepicker').datetimepicker();
 </script>
 
 

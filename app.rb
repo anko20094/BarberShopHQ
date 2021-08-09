@@ -6,6 +6,11 @@ require 'sinatra/activerecord'
 set :database, {adapter: "sqlite3", database: "barbershop.db"}	
 
 class Client < ActiveRecord::Base
+	validates :name, {presence: true}
+	validates :phone, {presence: true}
+	validates :datestamp, {presence: true}
+	validates :color, {presence: true}
+	# validates :name, {presence: true}
 end
 
 class Barber < ActiveRecord::Base
@@ -39,25 +44,9 @@ get '/visit' do
 end
 
 post '/visit' do
-	@username=params[:name]
-	@phone=params[:phone]
-	@datetime=params[:date]
-	@barber=params[:barber]
-	@color=params[:color]
+	c = Client.new params[:client]
+	c.save
 
-	hh = { 
-		:name => 'Введіть ім\'я',
-		:phone => 'Введіть телефон',
-		:date => 'Введіть дату та час'
-	}
-	
-	# для уожної пари ключ-значення
-	# hh.each do |key, value|
-	#   if params[key] == ''
-	#     @error = hh[key]
-	#   return erb :visit
-	# end
-	# end
 	
 	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
 	if @error != ''
@@ -78,9 +67,8 @@ get '/contacts' do
 end
 
 post '/contacts' do
-	name = params[:name]
-	phone = params[:phone]
-	question = params[:question]
+	c = Contact.new params[:contact]
+	c.save
 
 	save_form_data_to_database_contacts(name, phone, question)
 	erb :contacts
