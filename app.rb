@@ -43,15 +43,16 @@ get '/' do
 end
 
 get '/visit' do
+	@c = Client.new
 	erb :visit
 end
 
 post '/visit' do
-	c = Client.new params[:client]
-	if c.save
+	@c = Client.new params[:client]
+	if @c.save
 		erb "<h2>Вітаю, Ви записалися!</h2>"
 	else
-		@error = c.errors.full_messages.first
+		@error = @c.errors.full_messages.first
 		erb :visit
 	end
 
@@ -64,15 +65,16 @@ end
 
 # Задвання №2 29 урок тут
 get '/contacts' do
+	@con = Contact.new
 	erb :contacts
 end
 
 post '/contacts' do
-	c = Contact.new params[:contact]
-	if c.save
+	con = Contact.new params[:contact]
+	if con.save
 		erb "<h2>Ваше повідомлення доставлене!</h2>"
 	else
-		@error = c.errors.full_messages.first
+		@error = con.errors.full_messages.first
 		erb :contacts
 	end
 	# save_form_data_to_database_contacts(name, phone, question)

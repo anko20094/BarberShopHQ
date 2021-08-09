@@ -12,17 +12,17 @@
 <br />
   <div class="form-group">
     <label>Введіть своє ім'я:</label>
-    <input type="text" name="client[name]" class="form-control" placeholder="Введіть тут своє ім'я" value="<%= params[:name]%>">
+    <input type="text" name="client[name]" class="form-control" placeholder="Введіть тут своє ім'я" value="<%= @c.name %>">
   </div>
 
   <div class="form-group">
     <label>Введіть свій телефон:</label>
-  <input type="text" name="client[phone]" class="form-control" placeholder="Введіть тут свій номер телефону" value="<%= params[:phone]%>">
+  <input type="number" name="client[phone]" class="form-control" placeholder="Введіть тут свій номер телефону" value="<%= @c.phone %>">
   </div>
 
   <div class="form-group">
     <label>Коли Вас чекати? </label>
-    <input type="datetime-local" name="client[datestamp]" class="form-control" placeholder="Введіть дату й час свого візиту" value="<%= params[:date]%>">
+    <input type="datetime-local" name="client[datestamp]" class="form-control" placeholder="Введіть дату й час свого візиту" value="<%= @c.datestamp %>">
   </div>
   <div class="form-group">
     <label>Колір Вашого волосся буде: </label>
