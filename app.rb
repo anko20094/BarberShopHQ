@@ -48,12 +48,10 @@ post '/visit' do
 	if c.save
 		erb "<h2>Вітаю, Ви записалися!</h2>"
 	else
-		erb "<h2>Помилка</h2>"
+		@error = c.errors.full_messages.first
+		erb :visit
 	end
-	# @error = hh.select {|key,_| params[key] == ""}.values.join(", ")
-	# if @error != ''
-	# 	return erb :visit
-	# end
+
 	
 	# Задвання №1 29 урок тут
 	# save_form_data_to_database(@username, @phone, @datetime, @barber, @color)
