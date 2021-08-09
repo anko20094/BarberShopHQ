@@ -80,3 +80,8 @@ post '/contacts' do
 	# save_form_data_to_database_contacts(name, phone, question)
 end
 # ---
+
+
+get '/barber/:id' do
+	erb :barber
+end
