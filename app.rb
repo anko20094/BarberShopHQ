@@ -18,6 +18,9 @@ end
 
 
 class Contact < ActiveRecord::Base
+	validates :name, {presence: true}
+	validates :phone, {presence: true}
+	validates :question, {presence: true}
 end
 
 # Задвання №1 29 урок тут
@@ -66,9 +69,12 @@ end
 
 post '/contacts' do
 	c = Contact.new params[:contact]
-	c.save
-
+	if c.save
+		erb "<h2>Ваше повідомлення доставлене!</h2>"
+	else
+		@error = c.errors.full_messages.first
+		erb :contacts
+	end
 	# save_form_data_to_database_contacts(name, phone, question)
-	erb :contacts
 end
 # ---
