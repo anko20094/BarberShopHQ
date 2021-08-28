@@ -10,7 +10,6 @@ class Client < ActiveRecord::Base
 	validates :phone, {presence: true}
 	validates :datestamp, {presence: true}
 	validates :color, {presence: true}
-	# validates :name, {presence: true}
 end
 
 class Barber < ActiveRecord::Base
